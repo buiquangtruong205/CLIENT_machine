@@ -9,6 +9,39 @@
 let products = [];
 
 // ===========================
+// Session Management
+// ===========================
+const SESSION_ID = 'session-' + Math.random().toString(36).substring(2, 15) + '-' + Date.now();
+let heartbeatInterval;
+
+async function startHeartbeat() {
+    try {
+        const res = await apiSendHeartbeat(SESSION_ID);
+        if (res && res.rejected) {
+            showInUseOverlay();
+        } else {
+            hideInUseOverlay();
+        }
+    } catch (err) {
+        console.error('Lỗi khi gửi heartbeat:', err);
+    }
+}
+
+function showInUseOverlay() {
+    const overlay = document.getElementById('in-use-overlay');
+    if (overlay && overlay.style.display !== 'flex') {
+        overlay.style.display = 'flex';
+    }
+}
+
+function hideInUseOverlay() {
+    const overlay = document.getElementById('in-use-overlay');
+    if (overlay && overlay.style.display !== 'none') {
+        overlay.style.display = 'none';
+    }
+}
+
+// ===========================
 // Load Products
 // ===========================
 
@@ -116,6 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Đồng hồ
     updateClock();
     setInterval(updateClock, 1000);
+
+    // Bắt đầu heartbeat
+    startHeartbeat();
+    heartbeatInterval = setInterval(startHeartbeat, 3000);
 
     // Tải sản phẩm
     loadProducts();

@@ -39,6 +39,9 @@ const API = {
     SLOTS: (machineId = ENV.MACHINE_ID) => `${ENV.API_BASE_URL}/slots?machine_id=${machineId}`,
     MACHINE_STATUS: (machineId = ENV.MACHINE_ID) => `${ENV.API_BASE_URL}/machines/${machineId}`,
 
+    // Session Management
+    FRONTEND_HEARTBEAT: () => `${ENV.API_BASE_URL}/iot/frontend-heartbeat`,
+
     // Orders
     CREATE_ORDER: () => `${ENV.API_BASE_URL}/iot/create-order`,
     ORDER_STATUS: (orderId) => `${ENV.API_BASE_URL}/orders/${orderId}/status`,

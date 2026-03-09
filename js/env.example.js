@@ -8,7 +8,7 @@
  */
 const __ENV__ = {
     // Backend API URL — ví dụ: 'http://192.168.1.100:5000/api'
-    VITE_API_BASE_URL: 'http://localhost:5000/api',
+    VITE_API_BASE_URL: 'https://maybanhang-o9t8.onrender.com/api',
 
     // Machine key — phải khớp với MACHINE_KEYS trong backend .env
     VITE_MACHINE_KEY: 'may1',

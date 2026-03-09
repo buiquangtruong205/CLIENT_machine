@@ -20,6 +20,20 @@ function machineHeaders() {
 // ===========================
 
 /**
+ * Gửi heartbeat từ frontend để duy trì session.
+ * @param {string} sessionId
+ * @returns {Promise<object>}
+ */
+async function apiSendHeartbeat(sessionId) {
+    const res = await fetch(API.FRONTEND_HEARTBEAT(), {
+        method: 'POST',
+        headers: machineHeaders(),
+        body: JSON.stringify({ session_id: sessionId }),
+    });
+    return res.json();
+}
+
+/**
  * Lấy trạng thái máy bán hàng.
  * @returns {Promise<object>} API response
  */

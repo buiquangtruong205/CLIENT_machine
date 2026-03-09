@@ -6,7 +6,7 @@
  */
 const __ENV__ = {
     // Backend API URL — đổi thành IP/domain thực khi deploy
-    VITE_API_BASE_URL: 'http://localhost:5000/api',
+    VITE_API_BASE_URL: 'https://maybanhang-o9t8.onrender.com/api',
 
     // Machine key dùng để xác thực request từ máy bán hàng
     VITE_MACHINE_KEY: 'may1',
